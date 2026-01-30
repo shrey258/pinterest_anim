@@ -3,6 +3,7 @@ import { SymbolView } from "expo-symbols";
 import { Pressable, ScrollView, Text, TextInput, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { MasonryGrid } from "../src/components/masonry-grid";
+import { PinOverlay } from "../src/components/pin-overlay";
 import { samplePins } from "../src/data/sample-pins";
 
 export default function HomeScreen() {
@@ -15,6 +16,7 @@ export default function HomeScreen() {
         style={{
           paddingTop: insets.top,
           backgroundColor: "#fff",
+          zIndex: 1,
         }}
       >
         {/* Top Row: Logo + Avatar */}
@@ -160,6 +162,9 @@ export default function HomeScreen() {
       >
         <MasonryGrid pins={samplePins} numColumns={2} gap={8} />
       </ScrollView>
+
+      {/* Pin Overlay - renders above everything when active */}
+      <PinOverlay />
     </View>
   );
 }
